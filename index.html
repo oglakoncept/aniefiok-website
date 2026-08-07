@@ -221,6 +221,17 @@ html[data-theme="dark"] .svc-dark{--dark-card-bg:#050D13; --dark-card-accent:#D9
 
 /* ===== Capsule process timeline (My Working Frameworks) ===== */
 .grafx-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+
+/* ===== Consulting Portfolio carousel ===== */
+.carousel-wrap{position:relative;}
+.carousel-track{display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 4px 14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+.carousel-track::-webkit-scrollbar{display:none;}
+.carousel-track .grafx-card{flex:0 0 300px; scroll-snap-align:start;}
+.carousel-dots{display:flex; justify-content:center; align-items:center; gap:7px; margin-top:10px; flex-wrap:wrap;}
+.carousel-dots .dot{width:8px; height:8px; padding:0; border-radius:50%; border:none; background:var(--line); cursor:pointer; transition:background .25s ease, width .25s ease, border-radius .25s ease;}
+.carousel-dots .dot.active{background:var(--rust); width:22px; border-radius:5px;}
+.carousel-dots .dot:hover{background:var(--ochre);}
+@media (max-width:640px){ .carousel-track .grafx-card{flex-basis:82vw;} }
 .grafx-card{position:relative; overflow:hidden; background:var(--sand); border-radius:14px; padding:18px 20px 16px; border-top:4px solid var(--accent,var(--rust)); box-shadow:0 4px 14px rgba(56,44,32,0.07); transition:transform .2s ease, box-shadow .2s ease;}
 
 /* ===== Case study deep-dives ===== */
@@ -261,6 +272,9 @@ html[data-theme="dark"] .svc-dark{--dark-card-bg:#050D13; --dark-card-accent:#D9
 .pub-kind{font-size:0.76rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--rust); font-weight:700; display:block; margin-bottom:10px;}
 .pub-card h4{font-family:'Fraunces',serif; font-size:1.02rem; font-weight:700; margin-bottom:8px; line-height:1.3;}
 .pub-card p{font-size:0.91rem; color:var(--olive-soft); margin:0;}
+.pub-link{display:inline-flex; align-items:center; gap:5px; margin-top:12px; font-size:0.84rem; font-weight:700; color:var(--rust); text-decoration:none; border-bottom:1px solid var(--rust); padding-bottom:2px;}
+.pub-link:hover{color:var(--umber); border-color:var(--umber);}
+.pub-link-name{font-weight:700;}
 @media (max-width:900px){ .pub-grid{grid-template-columns:1fr 1fr;} }
 @media (max-width:640px){ .pub-grid{grid-template-columns:1fr;} }
 
@@ -555,7 +569,8 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
 <section id="consultancies">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow reveal">Consulting Portfolio</span><h2>Selected Engagements and Contributions</h2><p>Selected consulting contributions and professional engagements.</p></div>
-    <div class="grafx-grid">
+    <div class="carousel-wrap">
+    <div class="carousel-track" id="consultTrack">
       <article class="grafx-card reveal" style="--accent:var(--rust);">
         <span class="grafx-num">01</span>
         <div class="grafx-icon"><svg class="icon"><use href="#i-users"/></svg></div>
@@ -646,8 +661,54 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
         <p>Led an OECD-DAC-aligned endline evaluation of a multi-year WASH and maternal and child health programme, producing decision-ready evidence on sustainability and scale-up while ensuring rigorous data quality.</p>
       </article>
     </div>
+    <div class="carousel-dots" id="consultDots"></div>
+    </div>
   </div>
 </section>
+
+<section id="experience" class="band">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow reveal">Career Record</span><h2>Chapters of Professional Experience</h2><p>A documented journey of roles, contributions, and professional growth.</p></div>
+    <div class="grafx-grid">
+      <article class="grafx-card reveal" style="--accent:var(--rust);">
+        <span class="grafx-num">01</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-refresh"/></svg></div>
+        <span class="kicker">Chapter</span>
+        <h3>Collaborating, Learning & Adapting (Knowledge Management & Learning) Specialist</h3>
+        <div class="byline">Dexis / USAID West Africa &middot; 2022–2024 · Ghana</div>
+        <p>Led a mission-wide Knowledge Management and CLA approach across five countries, strengthening adaptive learning, evidence use, peer exchange, and cross-country collaboration.</p>
+      </article>
+
+      <article class="grafx-card reveal" style="--accent:var(--olive);">
+        <span class="grafx-num">02</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-compass"/></svg></div>
+        <span class="kicker">Chapter</span>
+        <h3>Senior Collaborating, Learning, and Adapting (Knowledge Management & Learning) Advisor</h3>
+        <div class="byline">Mercy Corps &middot; 2020–2022 · Nigeria</div>
+        <p>Embedded CLA across Mercy Corps Nigeria&rsquo;s RRA portfolio, shifting planning and reporting from activity compliance to outcome-focused learning. Developed learning agendas and evidence-to-action frameworks that strengthened donor confidence and supported programme renewal.</p>
+      </article>
+
+      <article class="grafx-card reveal" style="--accent:var(--ochre);">
+        <span class="grafx-num">03</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-bars"/></svg></div>
+        <span class="kicker">Chapter</span>
+        <h3>Roving Monitoring, Evaluation & Learning Officer</h3>
+        <div class="byline">International Rescue Committee &middot; 2019–2020 · Nigeria, 3 states</div>
+        <p>Designed and implemented a unified MEL system across a three-state portfolio, strengthening data quality, performance monitoring, reporting, and evidence-based decision-making.</p>
+      </article>
+
+      <article class="grafx-card reveal" style="--accent:var(--rust);">
+        <span class="grafx-num">04</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-book"/></svg></div>
+        <span class="kicker">Chapter</span>
+        <h3>Monitoring, Evaluation & Learning Coordinator</h3>
+        <div class="byline">Save the Children &middot; 2016–2018 · Nigeria, 5 states</div>
+        <p>Strengthened MEL and knowledge systems across multi-sector programmes, improving indicator coherence, executive visibility, KPI reporting, and team capacity through structured coaching across five states.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 
 <section id="case-studies" class="band">
   <div class="wrap">
@@ -709,49 +770,6 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
   </div>
 </section>
 
-<section id="experience" class="band">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow reveal">Career Record</span><h2>Chapters of Professional Experience</h2><p>A documented journey of roles, contributions, and professional growth.</p></div>
-    <div class="grafx-grid">
-      <article class="grafx-card reveal" style="--accent:var(--rust);">
-        <span class="grafx-num">01</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-refresh"/></svg></div>
-        <span class="kicker">Chapter</span>
-        <h3>Collaborating, Learning & Adapting (Knowledge Management & Learning) Specialist</h3>
-        <div class="byline">Dexis / USAID West Africa &middot; 2022–2024 · Ghana</div>
-        <p>Led a mission-wide Knowledge Management and CLA approach across five countries, strengthening adaptive learning, evidence use, peer exchange, and cross-country collaboration.</p>
-      </article>
-
-      <article class="grafx-card reveal" style="--accent:var(--olive);">
-        <span class="grafx-num">02</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-compass"/></svg></div>
-        <span class="kicker">Chapter</span>
-        <h3>Senior Collaborating, Learning, and Adapting (Knowledge Management & Learning) Advisor</h3>
-        <div class="byline">Mercy Corps &middot; 2020–2022 · Nigeria</div>
-        <p>Embedded CLA across Mercy Corps Nigeria&rsquo;s RRA portfolio, shifting planning and reporting from activity compliance to outcome-focused learning. Developed learning agendas and evidence-to-action frameworks that strengthened donor confidence and supported programme renewal.</p>
-      </article>
-
-      <article class="grafx-card reveal" style="--accent:var(--ochre);">
-        <span class="grafx-num">03</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-bars"/></svg></div>
-        <span class="kicker">Chapter</span>
-        <h3>Roving Monitoring, Evaluation & Learning Officer</h3>
-        <div class="byline">International Rescue Committee &middot; 2019–2020 · Nigeria, 3 states</div>
-        <p>Designed and implemented a unified MEL system across a three-state portfolio, strengthening data quality, performance monitoring, reporting, and evidence-based decision-making.</p>
-      </article>
-
-      <article class="grafx-card reveal" style="--accent:var(--rust);">
-        <span class="grafx-num">04</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-book"/></svg></div>
-        <span class="kicker">Chapter</span>
-        <h3>Monitoring, Evaluation & Learning Coordinator</h3>
-        <div class="byline">Save the Children &middot; 2016–2018 · Nigeria, 5 states</div>
-        <p>Strengthened MEL and knowledge systems across multi-sector programmes, improving indicator coherence, executive visibility, KPI reporting, and team capacity through structured coaching across five states.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section id="sectors" class="sectors-bg">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow reveal">Sector Field Notes</span><h2>Experiences Across Systems</h2><p>Cross-sector experiences shaping research, evaluation, and adaptation.</p></div>
@@ -777,6 +795,7 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
         <span class="pub-kind">Case Study &middot; Award Winner</span>
         <h4>How Restructuring and Culture Change Impacted Our Performance</h4>
         <p>2022 USAID Global Collaborating, Learning, and Adapting (CLA) Case Study Award winner.</p>
+        <a class="pub-link" href="https://drive.google.com/uc?export=download&amp;id=1Nm92BAR8eXmiVbd6HyY1i4yTpxei0rxH" download="CLA_Case_Study.pdf">Download Here &raquo;&raquo;&raquo; <span class="pub-link-name">CLA Case Study</span></a>
       </div>
 
       <div class="pub-card reveal">
@@ -981,6 +1000,43 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     counters.forEach(function(el){ el.textContent = '0'; cobs.observe(el); });
   } else {
     counters.forEach(function(el){ el.textContent = el.dataset.value; });
+  }
+
+  var consultTrack = document.getElementById('consultTrack');
+  var consultDots = document.getElementById('consultDots');
+  if(consultTrack && consultDots){
+    var cCards = Array.prototype.slice.call(consultTrack.children);
+    cCards.forEach(function(card, i){
+      var dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to dispatch ' + (i + 1));
+      dot.addEventListener('click', function(){
+        consultTrack.scrollTo({ left: card.offsetLeft - consultTrack.offsetLeft, behavior: 'smooth' });
+      });
+      consultDots.appendChild(dot);
+    });
+    var cDots = Array.prototype.slice.call(consultDots.children);
+    var cScrollT;
+    function updateActiveDot(){
+      var atEnd = consultTrack.scrollLeft + consultTrack.clientWidth >= consultTrack.scrollWidth - 2;
+      var closest;
+      if(atEnd){
+        closest = cCards.length - 1;
+      } else {
+        var trackLeft = consultTrack.getBoundingClientRect().left;
+        closest = 0;
+        var closestDist = Infinity;
+        cCards.forEach(function(card, i){
+          var dist = Math.abs(card.getBoundingClientRect().left - trackLeft);
+          if(dist < closestDist){ closestDist = dist; closest = i; }
+        });
+      }
+      cDots.forEach(function(d, i){ d.classList.toggle('active', i === closest); });
+    }
+    consultTrack.addEventListener('scroll', function(){
+      clearTimeout(cScrollT);
+      cScrollT = setTimeout(updateActiveDot, 80);
+    });
   }
 
   var tooltip = document.getElementById('mapTooltip');
