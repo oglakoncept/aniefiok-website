@@ -49,7 +49,7 @@ a{color:inherit;}
 img,svg{display:block; max-width:100%;}
 .icon{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;}
 a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--rust); outline-offset:3px;}
-.award-banner{background:#000; color:var(--sand); padding:9px 0; font-size:0.86rem; text-align:center; font-weight:600;}
+.award-banner{background:#000; color:var(--dark-card-text); padding:9px 0; font-size:0.86rem; text-align:center; font-weight:600;}
 header.masthead-bar{position:sticky; top:0; z-index:60; background:var(--sand); border-bottom:3px double var(--umber); transition:background .25s ease;}
 .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:11px 32px; max-width:var(--max); margin:0 auto; gap:16px; flex-wrap:wrap;}
 .kicker-bar{padding:14px 0; background:var(--ochre);}
@@ -104,9 +104,17 @@ section:last-of-type{border-bottom:none;}
 .reveal{opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease;}
 .reveal.is-visible{opacity:1; transform:none;}
 .band{background:var(--sand-deep);}
-.how-diagram-card{background:var(--dark-card-bg); border-radius:20px; padding:32px 32px 28px;}
-.how-diagram-card .rope-wrap{margin:0;}
-@media (max-width:900px){ .how-diagram-card{padding:8px 18px 4px; background:none;} }
+/* ===== Working frameworks table ===== */
+.flow-table-wrap{overflow-x:auto;}
+.flow-table{width:100%; max-width:1100px; margin:0 auto; border-collapse:separate; border-spacing:4px 0; table-layout:fixed;}
+.flow-cell{padding:26px 18px; text-align:center; vertical-align:middle; font-family:'Fraunces',serif; font-weight:600; font-size:1.02rem; line-height:1.35; color:var(--dark-card-text); background:#000; border-top:3px solid var(--ochre); box-shadow:0 3px 10px rgba(11,27,38,0.06);}
+.flow-num{display:block; font-family:'Inter',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.1em; color:var(--ochre); margin-bottom:8px;}
+.flow-arrow-cell{width:46px; text-align:center; vertical-align:middle; color:var(--ochre); font-size:1.35rem; background:transparent; border:none;}
+@media (max-width:760px){
+  .flow-table, .flow-table tbody, .flow-table tr{display:block; width:100%;}
+  .flow-cell{display:block; width:100%; border-top:none; border-left:3px solid var(--ochre); margin-bottom:0;}
+  .flow-arrow-cell{display:block; width:100%; transform:rotate(90deg); padding:2px 0;}
+}
 .sectors-bg{background:#EEF1F4;}
 html[data-theme="dark"] .sectors-bg{background:#0D1820;}
 
@@ -212,35 +220,22 @@ html[data-theme="dark"] .svc-dark{--dark-card-bg:#050D13; --dark-card-accent:#D9
 
 
 /* ===== Capsule process timeline (My Working Frameworks) ===== */
-.rope-wrap{position:relative;}
-.rope-svg{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; overflow:visible; z-index:0;}
-.rope-track{fill:none; stroke:var(--ochre); stroke-width:3; stroke-linecap:round;}
-.rope-dot{fill:#000;}
-@media (max-width:900px){ .rope-svg{display:none;} }
-@media (prefers-reduced-motion: reduce){ .rope-svg{display:none;} }
-.cap-row{display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
-.cap-card{flex:1 1 180px; max-width:220px; background:var(--sand-deep); border:2px solid var(--ochre); border-radius:140px; padding:38px 18px 30px; text-align:center; position:relative; z-index:1;}
-.cap-header{position:relative; height:118px; margin-bottom:20px;}
-.cap-arc-svg{position:absolute; left:0; top:0; width:132px; height:112px; overflow:visible; pointer-events:none;}
-.cap-arc-outer{fill:none; stroke:var(--ochre); stroke-width:2; opacity:0.5;}
-.cap-arc-inner{fill:none; stroke:var(--ochre); stroke-width:2.5;}
-.cap-arc-dot{fill:var(--ochre);}
-.cap-icon-circle{position:absolute; left:29px; top:16px; width:74px; height:74px; border:2px solid var(--ochre); border-radius:50%; background:#4A2E1D; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 10px rgba(11,27,38,0.1); z-index:1;}
-.cap-icon-circle svg{width:30px; height:30px; color:var(--ochre);}
-.cap-arrow{position:absolute; left:110px; top:58px; right:14px; height:14px;}
-.cap-arrow svg{width:100%; height:100%; display:block; overflow:visible;}
-.cap-card h4{font-family:'Fraunces',serif; font-weight:700; font-size:1.05rem; margin:0 0 10px;}
-.cap-card p{font-size:0.85rem; color:var(--olive-soft); margin:0; line-height:1.45;}
-@media (max-width:900px){
-  .cap-row{flex-wrap:wrap;}
-  .cap-card{flex:1 1 45%; border-radius:28px;}
-}
-@media (max-width:560px){
-  .cap-card{flex:1 1 100%; max-width:320px; padding-left:22px; padding-right:22px;}
-}
-
 .grafx-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
 .grafx-card{position:relative; overflow:hidden; background:var(--sand); border-radius:14px; padding:18px 20px 16px; border-top:4px solid var(--accent,var(--rust)); box-shadow:0 4px 14px rgba(56,44,32,0.07); transition:transform .2s ease, box-shadow .2s ease;}
+
+/* ===== Case study deep-dives ===== */
+.case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+.case-card{background:var(--dark-card-bg); border-radius:16px; padding:30px 28px; display:flex; flex-direction:column;}
+.case-card .case-title{font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; color:var(--dark-card-text); margin:0 0 6px; line-height:1.3;}
+.case-card .case-meta{font-size:0.8rem; color:var(--ochre); margin-bottom:18px;}
+.case-block{margin-bottom:16px;}
+.case-block:last-child{margin-bottom:0;}
+.case-block .case-label{display:block; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ochre); font-weight:700; margin-bottom:5px;}
+.case-block p{font-size:0.88rem; color:#AAB8C2; line-height:1.5; margin:0;}
+.case-block.case-result{border-top:1px solid rgba(255,255,255,0.14); padding-top:14px; margin-top:auto;}
+.case-block.case-result p{color:var(--dark-card-text);}
+@media (max-width:900px){ .case-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:640px){ .case-grid{grid-template-columns:1fr;} }
 .grafx-card:hover{transform:translateY(-4px); box-shadow:0 12px 24px rgba(56,44,32,0.13);}
 .grafx-num{position:absolute; top:2px; right:14px; font-family:'Fraunces',serif; font-size:3.4rem; font-weight:700; color:var(--umber); opacity:0.07; line-height:1; z-index:0;}
 .grafx-icon{position:relative; z-index:1; width:38px; height:38px; border-radius:50%; background:var(--accent,var(--rust)); color:var(--sand); display:flex; align-items:center; justify-content:center; margin-bottom:10px;}
@@ -305,11 +300,62 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aniefiok Dominic Effiong",
+  "alternateName": "Aniefiok Dominic E.",
+  "url": "https://aniefiokdominic.com/",
+  "image": "https://aniefiokdominic.com/og-image.jpg",
+  "jobTitle": "Knowledge Management, MEAL & Adaptive Learning Consultant",
+  "description": "Knowledge Management, Monitoring, Evaluation, Accountability & Learning (MEAL), and adaptive learning specialist with 14+ years of experience across West and Sub-Saharan Africa.",
+  "sameAs": [
+    "https://www.linkedin.com/in/aniefiok-dominic/"
+  ],
+  "knowsAbout": [
+    "Knowledge Management",
+    "Monitoring and Evaluation",
+    "MEAL Systems",
+    "Adaptive Learning",
+    "Collaborating, Learning and Adapting (CLA)",
+    "Research and Evaluation",
+    "Project Management"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "Project Management Professional (PMP)®"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": "PMI Project Management Office (PMO) Certified"
+    }
+  ],
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Nasarawa State University, Keffi" },
+    { "@type": "CollegeOrUniversity", "name": "Rome Business School" },
+    { "@type": "CollegeOrUniversity", "name": "University of Central Nicaragua" },
+    { "@type": "CollegeOrUniversity", "name": "Assam Don Bosco University" },
+    { "@type": "CollegeOrUniversity", "name": "Federal University of Technology, Owerri" }
+  ],
+  "workLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Federal Capital Territory",
+      "addressCountry": "Nigeria"
+    }
+  }
+}
+</script>
 </head>
 <body>
 
 
-<div class="award-banner">&#127942; 2022 USAID Global CLA Case Study Award Winner, highest global recognition for Collaborating, Learning &amp; Adapting practice</div>
+<div class="award-banner">&#127942; 2022 USAID Global CLA Case Study Competition Award Winner: Highest global recognition for Collaborating, Learning &amp; Adapting practice</div>
 
 <header class="masthead-bar">
   <div class="nav-inner">
@@ -343,7 +389,7 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     <div>
       <h2 class="headline reveal">14+ years turning field evidence into institutional practice.</h2>
       <p class="dropcap reveal">I design and institutionalize knowledge management systems, M&amp;E frameworks, research and evaluation studies, and adaptive learning practice for governments, donors, and international NGOs across West and Sub-Saharan Africa. Every engagement is built to outlive the contract that funded it.</p>
-      <p class="pullquote reveal">"A USAID Global CLA Case Study Award Winner, Project Management Professional (PMP&reg;) and PMI Project Management Office (PMO) certified professional whose work is trusted by clients to bridge the gap between evidence and action, strengthening MEAL systems, enabling adaptive learning, and building organizations that learn, improve, and deliver impact."</p>
+      <p class="pullquote reveal">"A USAID Global CLA Case Study Competition Award Winner, Project Management Professional (PMP&reg;) and PMI Project Management Office (PMO) certified professional whose work is trusted by clients to bridge the gap between evidence and action, strengthening MEAL systems, enabling adaptive learning, and building organizations that learn, improve, and deliver impact."</p>
       <div class="cta-row reveal">
         <a class="btn btn-primary" href="#contact">Start a conversation</a>
         <a class="btn btn-ghost" href="https://drive.google.com/uc?export=download&amp;id=1yxVXwAlmDJVrjIaGl0o6QqTU8HWFdnB6" download="Aniefiok_Dominic_Effiong_CV.pdf">Curriculum Vitae</a>
@@ -401,41 +447,6 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
         <div class="stat-num"><span data-value="1">0</span>st</div>
         <div class="stat-label">National Health Sector KM System</div>
         <div class="stat-desc">Contributed to establishing Nigeria's National KM system for the Federal Ministry of Health & Social Welfare, aligned with ISO 30401.</div>
-      </div>
-
-      <div class="stat-card reveal">
-        <svg class="icon stat-icon"><use href="#i-bars"/></svg>
-        <div class="stat-num"><span data-value="87.5">0</span>%</div>
-        <div class="stat-label">MEAL Competency Improvement</div>
-        <div class="stat-desc">Measured improvement in organization staff competencies after a capacity-strengthening programme for a Foundation.</div>
-      </div>
-
-      <div class="stat-card reveal">
-        <svg class="icon stat-icon"><use href="#i-refresh"/></svg>
-        <div class="stat-num"><span data-value="6">0</span></div>
-        <div class="stat-label">Programmes Harmonized</div>
-        <div class="stat-desc">Harmonized into a single MEAL performance framework for a Foundation, enabling cross-programme measurement for the first time.</div>
-      </div>
-
-      <div class="stat-card reveal">
-        <svg class="icon stat-icon"><use href="#i-compass"/></svg>
-        <div class="stat-num"><span data-value="2121">0</span></div>
-        <div class="stat-label">Data Points Analyzed</div>
-        <div class="stat-desc">Data points across 7 health system domains analyzed for a rapid vulnerability assessment informing Nigeria's NHSRII reprioritization.</div>
-      </div>
-
-      <div class="stat-card reveal">
-        <svg class="icon stat-icon"><use href="#i-pin"/></svg>
-        <div class="stat-num"><span data-value="10">0</span></div>
-        <div class="stat-label">States Assessed</div>
-        <div class="stat-desc">Tax grievance redress mechanism performance, informing alignment with Nigeria's new tax reform acts.</div>
-      </div>
-
-      <div class="stat-card reveal">
-        <svg class="icon stat-icon"><use href="#i-trophy"/></svg>
-        <div class="stat-num"><span data-value="2022">0</span></div>
-        <div class="stat-label">USAID CLA Case Study Award</div>
-        <div class="stat-desc">Winner, 2022 USAID Global Collaborating, Learning and Adapting Case Study Award, the field's highest global recognition.</div>
       </div>
 
       <div class="stat-card reveal">
@@ -521,71 +532,22 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
 <section id="how" class="band">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow reveal">My Working Frameworks</span><h2>The Systems Behind the Practice</h2><p class="p-oneline">Exploring the systems, tools, and thinking approaches behind effective solutions.</p></div>
-    <div class="how-diagram-card reveal">
-    <div class="rope-wrap" id="ropeWrap">
-      <svg class="rope-svg" id="ropeSvg" aria-hidden="true">
-        <defs>
-          <marker id="ropeArrowhead" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto-start-reverse">
-            <path d="M0,0 L10,5 L0,10 Z" fill="var(--ochre)"/>
-          </marker>
-        </defs>
-        <path class="rope-track" id="ropeTrack" d="" marker-end="url(#ropeArrowhead)"/>
-        <circle class="rope-dot" id="ropeDot" r="7">
-          <animateMotion id="ropeMotion" dur="8s" repeatCount="indefinite" rotate="auto"/>
-        </circle>
-      </svg>
-      <div class="cap-row" id="capRow">
-      <div class="cap-card">
-        <div class="cap-header">
-          <svg class="cap-arc-svg" viewBox="0 0 132 112"><path class="cap-arc-outer" d="M125.9,69.0 A62,62 0 0 1 66.0,115.0 A62,62 0 0 1 4.0,53.0 A62,62 0 0 1 66.0,-9.0 A62,62 0 0 1 87.2,-5.3"/><circle class="cap-arc-dot" cx="87.2" cy="-5.3" r="4"/><path class="cap-arc-inner" d="M110.4,64.9 A46,46 0 0 1 66.0,99.0 A46,46 0 0 1 20.0,53.0 A46,46 0 0 1 66.0,7.0 A46,46 0 0 1 81.7,9.8"/></svg>
-          <div class="cap-icon-circle"><svg class="icon"><use href="#i-chat"/></svg></div>
-          <span class="cap-arrow"><svg viewBox="0 0 100 14"><line x1="2" y1="7" x2="88" y2="7" stroke="var(--ochre)" stroke-width="2"/><path d="M82,1 L96,7 L82,13 Z" fill="var(--ochre)"/></svg></span>
-        </div>
-        <h4>Listen &amp; Diagnose</h4>
-        <p>Understand the institution&rsquo;s real knowledge and evidence gaps, not just the terms of reference.</p>
-      </div>
-
-      <div class="cap-card">
-        <div class="cap-header">
-          <svg class="cap-arc-svg" viewBox="0 0 132 112"><path class="cap-arc-outer" d="M125.9,69.0 A62,62 0 0 1 66.0,115.0 A62,62 0 0 1 4.0,53.0 A62,62 0 0 1 66.0,-9.0 A62,62 0 0 1 87.2,-5.3"/><circle class="cap-arc-dot" cx="87.2" cy="-5.3" r="4"/><path class="cap-arc-inner" d="M110.4,64.9 A46,46 0 0 1 66.0,99.0 A46,46 0 0 1 20.0,53.0 A46,46 0 0 1 66.0,7.0 A46,46 0 0 1 81.7,9.8"/></svg>
-          <div class="cap-icon-circle"><svg class="icon"><use href="#i-book"/></svg></div>
-          <span class="cap-arrow"><svg viewBox="0 0 100 14"><line x1="2" y1="7" x2="88" y2="7" stroke="var(--ochre)" stroke-width="2"/><path d="M82,1 L96,7 L82,13 Z" fill="var(--ochre)"/></svg></span>
-        </div>
-        <h4>Design the System</h4>
-        <p>Build the KM strategy, M&amp;E framework, or learning architecture around how the institution actually works.</p>
-      </div>
-
-      <div class="cap-card">
-        <div class="cap-header">
-          <svg class="cap-arc-svg" viewBox="0 0 132 112"><path class="cap-arc-outer" d="M125.9,69.0 A62,62 0 0 1 66.0,115.0 A62,62 0 0 1 4.0,53.0 A62,62 0 0 1 66.0,-9.0 A62,62 0 0 1 87.2,-5.3"/><circle class="cap-arc-dot" cx="87.2" cy="-5.3" r="4"/><path class="cap-arc-inner" d="M110.4,64.9 A46,46 0 0 1 66.0,99.0 A46,46 0 0 1 20.0,53.0 A46,46 0 0 1 66.0,7.0 A46,46 0 0 1 81.7,9.8"/></svg>
-          <div class="cap-icon-circle"><svg class="icon"><use href="#i-users"/></svg></div>
-          <span class="cap-arrow"><svg viewBox="0 0 100 14"><line x1="2" y1="7" x2="88" y2="7" stroke="var(--ochre)" stroke-width="2"/><path d="M82,1 L96,7 L82,13 Z" fill="var(--ochre)"/></svg></span>
-        </div>
-        <h4>Build With the Team</h4>
-        <p>Co-create tools, taxonomies, and instruments with the people who will use them, not around them.</p>
-      </div>
-
-      <div class="cap-card">
-        <div class="cap-header">
-          <svg class="cap-arc-svg" viewBox="0 0 132 112"><path class="cap-arc-outer" d="M125.9,69.0 A62,62 0 0 1 66.0,115.0 A62,62 0 0 1 4.0,53.0 A62,62 0 0 1 66.0,-9.0 A62,62 0 0 1 87.2,-5.3"/><circle class="cap-arc-dot" cx="87.2" cy="-5.3" r="4"/><path class="cap-arc-inner" d="M110.4,64.9 A46,46 0 0 1 66.0,99.0 A46,46 0 0 1 20.0,53.0 A46,46 0 0 1 66.0,7.0 A46,46 0 0 1 81.7,9.8"/></svg>
-          <div class="cap-icon-circle"><svg class="icon"><use href="#i-shield"/></svg></div>
-          <span class="cap-arrow"><svg viewBox="0 0 100 14"><line x1="2" y1="7" x2="88" y2="7" stroke="var(--ochre)" stroke-width="2"/><path d="M82,1 L96,7 L82,13 Z" fill="var(--ochre)"/></svg></span>
-        </div>
-        <h4>Institutionalize &amp; Handover</h4>
-        <p>Embed practices into policy, workflow, and culture so they outlast the consultancy.</p>
-      </div>
-
-      <div class="cap-card">
-        <div class="cap-header">
-          <svg class="cap-arc-svg" viewBox="0 0 132 112"><path class="cap-arc-outer" d="M125.9,69.0 A62,62 0 0 1 66.0,115.0 A62,62 0 0 1 4.0,53.0 A62,62 0 0 1 66.0,-9.0 A62,62 0 0 1 87.2,-5.3"/><circle class="cap-arc-dot" cx="87.2" cy="-5.3" r="4"/><path class="cap-arc-inner" d="M110.4,64.9 A46,46 0 0 1 66.0,99.0 A46,46 0 0 1 20.0,53.0 A46,46 0 0 1 66.0,7.0 A46,46 0 0 1 81.7,9.8"/></svg>
-          <div class="cap-icon-circle"><svg class="icon"><use href="#i-refresh"/></svg></div>
-          <span class="cap-arrow"><svg viewBox="0 0 100 14"><line x1="2" y1="7" x2="88" y2="7" stroke="var(--ochre)" stroke-width="2"/><path d="M82,1 L96,7 L82,13 Z" fill="var(--ochre)"/></svg></span>
-        </div>
-        <h4>Evidence &amp; Iterate</h4>
-        <p>Track what&rsquo;s working and adapt, knowledge and learning systems are living, not one-off deliverables.</p>
-      </div>
-      </div>
-    </div>
+    <div class="flow-table-wrap reveal">
+      <table class="flow-table">
+        <tbody>
+          <tr>
+            <td class="flow-cell"><span class="flow-num">STEP 01</span>Listen &amp; Diagnose the problem</td>
+            <td class="flow-arrow-cell">&#10132;</td>
+            <td class="flow-cell"><span class="flow-num">STEP 02</span>Design the Framework</td>
+            <td class="flow-arrow-cell">&#10132;</td>
+            <td class="flow-cell"><span class="flow-num">STEP 03</span>Build With the Team for Sustainability</td>
+            <td class="flow-arrow-cell">&#10132;</td>
+            <td class="flow-cell"><span class="flow-num">STEP 04</span>Institutionalize &amp; Handover the product</td>
+            <td class="flow-arrow-cell">&#10132;</td>
+            <td class="flow-cell"><span class="flow-num">STEP 05</span>Track what&rsquo;s working and adapt</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -598,7 +560,7 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
         <span class="grafx-num">01</span>
         <div class="grafx-icon"><svg class="icon"><use href="#i-users"/></svg></div>
         <span class="kicker">Dispatch 01</span>
-        <h3>Senior Knowledge Management & Learning Lead &mdash; AWLI Impact Assessment</h3>
+        <h3>Senior Knowledge Management & Learning Consultant &mdash; AWLI Impact Assessment</h3>
         <div class="byline">Akina Mama wa Afrika &middot; 2026 · Kenya, Uganda, Zambia, Senegal</div>
         <p>Curated evidence-based stories of change across 17 African countries using Outcome Harvesting and feminist narrative approaches, while developing a framework to strengthen the dissemination and strategic use of AWLI&rsquo;s impact evidence.</p>
       </article>
@@ -607,9 +569,9 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
         <span class="grafx-num">02</span>
         <div class="grafx-icon"><svg class="icon"><use href="#i-heart"/></svg></div>
         <span class="kicker">Dispatch 02</span>
-        <h3>Senior Evaluation & Adaptive Learning Lead &mdash; Endline Evaluation</h3>
+        <h3>Senior Evaluation & Adaptive Learning Consultant &mdash; Endline Evaluation</h3>
         <div class="byline">CBM Global & Comic Relief &middot; 2026 · Nigeria</div>
-        <p>Co-led the evaluation of a national mental health programme, generating triangulated evidence across four result areas and contributing to an endline report. Authored a case study and policy brief that informed Comic Relief&rsquo;s future investment decisions.</p>
+        <p>Supported the evaluation of a national mental health programme, generating triangulated evidence across four result areas and contributing to an endline report. Authored a case study and policy brief that informed Comic Relief&rsquo;s future investment decisions.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--ochre);">
@@ -683,6 +645,66 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
         <div class="byline">WaterAid &middot; May–Jul 2025 · Nigeria</div>
         <p>Led an OECD-DAC-aligned endline evaluation of a multi-year WASH and maternal and child health programme, producing decision-ready evidence on sustainability and scale-up while ensuring rigorous data quality.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<section id="case-studies" class="band">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow reveal">Case Studies</span><h2>Selected Work in Depth</h2><p class="p-oneline">Three engagements, from challenge through approach to result.</p></div>
+    <div class="case-grid">
+
+      <div class="case-card reveal">
+        <h3 class="case-title">Health System Vulnerability Assessment</h3>
+        <div class="case-meta">Federal Ministry of Health and Social Welfare &middot; Nigeria &middot; May 2026</div>
+        <div class="case-block">
+          <span class="case-label">Challenge</span>
+          <p>Nigeria's Federal Ministry of Health needed to understand the health system's vulnerability to external geopolitical and economic shocks in order to reprioritize national investment.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-label">Approach</span>
+          <p>Led a rapid assessment across 60 federal and state institutions and 2,121 data points spanning seven health system domains, applying a risk-scoring framework to rank critical vulnerabilities.</p>
+        </div>
+        <div class="case-block case-result">
+          <span class="case-label">Result</span>
+          <p>Findings informed NHSRII reprioritization, with key results presented by the Honourable Minister of Health and Social Welfare at the Geneva Conference to inform global health resilience discussions.</p>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <h3 class="case-title">KM Strategy Adoption and Institutionalization</h3>
+        <div class="case-meta">LAFIYA (UK-Nigeria Partnership for a Healthier Future) / Palladium &middot; Nigeria &middot; Oct 2025&ndash;Mar 2026</div>
+        <div class="case-block">
+          <span class="case-label">Challenge</span>
+          <p>Nigeria's health sector lacked an institutionalized system for capturing and using knowledge, risking the loss of programme learning once the consultancy ended.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-label">Approach</span>
+          <p>Established a national KM system aligned with the Health Sector KM strategy and the ISO 30401 international standard, built governance structures and a national Community of Practice, and developed a three-tier training curriculum with SOPs and guidelines.</p>
+        </div>
+        <div class="case-block case-result">
+          <span class="case-label">Result</span>
+          <p>Left the Ministry able to independently manage its KM functions beyond the consultancy, with a KM workplan developed and evidence use embedded into routine planning and decision-making.</p>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <h3 class="case-title">Disability Inclusion in DRR Baseline</h3>
+        <div class="case-meta">CBM &amp; Sustainable Family Healthcare Foundation (SFHF) &middot; Kogi State, Nigeria &middot; Mar&ndash;Apr 2026</div>
+        <div class="case-block">
+          <span class="case-label">Challenge</span>
+          <p>A disability inclusion and disaster risk reduction programme in Kogi State needed a measurement foundation before rollout, along with a clear picture of the specific gaps it should target.</p>
+        </div>
+        <div class="case-block">
+          <span class="case-label">Approach</span>
+          <p>Used a stratified, multi-instrument data collection design to capture a representative cross-section of disability status and geographic experience.</p>
+        </div>
+        <div class="case-block case-result">
+          <span class="case-label">Result</span>
+          <p>Delivered quantified, indicator-level benchmarks and identified specific gaps in policy, practice, and community awareness, directly shaping implementation priorities from day one.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -959,41 +981,6 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     counters.forEach(function(el){ el.textContent = '0'; cobs.observe(el); });
   } else {
     counters.forEach(function(el){ el.textContent = el.dataset.value; });
-  }
-
-  var ropeWrap = document.getElementById('ropeWrap');
-  var ropeSvg = document.getElementById('ropeSvg');
-  var ropeTrack = document.getElementById('ropeTrack');
-  var ropeMotion = document.getElementById('ropeMotion');
-  if(ropeWrap && ropeSvg && ropeTrack && ropeMotion && !reduced){
-    function drawRope(){
-      if(window.innerWidth < 900) return;
-      var wrapRect = ropeWrap.getBoundingClientRect();
-      if(wrapRect.width === 0) return;
-      ropeSvg.setAttribute('viewBox', '0 0 ' + wrapRect.width + ' ' + wrapRect.height);
-      var circles = ropeWrap.querySelectorAll('.cap-icon-circle');
-      var pts = [];
-      circles.forEach(function(c){
-        var r = c.getBoundingClientRect();
-        var cx = (r.left + r.right) / 2 - wrapRect.left;
-        var cy = r.bottom - wrapRect.top - 6;
-        pts.push(cx + ',' + cy);
-      });
-      if(pts.length < 2) return;
-      var d = 'M' + pts.join(' L');
-      ropeTrack.setAttribute('d', d);
-      ropeMotion.setAttribute('path', d);
-      if(typeof ropeMotion.beginElement === 'function'){
-        try { ropeMotion.beginElement(); } catch(e){}
-      }
-    }
-    window.addEventListener('load', drawRope);
-    var ropeResizeT;
-    window.addEventListener('resize', function(){
-      clearTimeout(ropeResizeT);
-      ropeResizeT = setTimeout(drawRope, 200);
-    });
-    setTimeout(drawRope, 50);
   }
 
   var tooltip = document.getElementById('mapTooltip');
