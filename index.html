@@ -62,7 +62,7 @@ header.masthead-bar{position:sticky; top:0; z-index:60; background:var(--sand); 
   .journal-title{font-size:clamp(0.85rem,5.6vw,1.35rem); white-space:nowrap; letter-spacing:0;}
 }
 .nav-links{display:flex; gap:18px; list-style:none; margin:0; padding:0; flex-wrap:wrap; align-items:center;}
-.nav-links a{text-decoration:none; font-size:0.84rem; color:var(--umber); font-weight:600; text-transform:uppercase; letter-spacing:0.03em;}
+.nav-links a{text-decoration:none; font-size:0.84rem; color:var(--umber); font-weight:600; text-transform:none; letter-spacing:0.03em;}
 .nav-links a:hover{color:var(--rust);}
 .theme-toggle{width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:transparent; font-size:1.05rem; cursor:pointer; display:flex; align-items:center; justify-content:center;}
 .theme-toggle:hover{background:var(--sand-deep);}
@@ -87,7 +87,9 @@ header.masthead-bar{position:sticky; top:0; z-index:60; background:var(--sand); 
 .hero p.dropcap{font-size:1.04rem; margin:18px 0;}
 .hero p.dropcap::first-letter{font-family:'Fraunces',serif; font-size:3.1rem; float:left; line-height:0.8; padding-right:10px; padding-top:6px; color:var(--rust); font-weight:700;}
 .pullquote{border-left:4px solid var(--rust); padding-left:18px; font-family:'Fraunces',serif; font-style:italic; font-size:1.1rem; color:var(--umber); margin:22px 0;}
-.cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:18px;}
+.cta-row{display:flex; gap:12px; flex-wrap:nowrap; margin-top:18px;}
+.cta-row .btn{padding:12px 16px; white-space:nowrap; justify-content:center;}
+@media (max-width:640px){ .cta-row{flex-wrap:wrap;} .cta-row .btn{flex:1 1 100%;} }
 .btn{display:inline-flex; align-items:center; gap:8px; padding:12px 22px; font-size:0.88rem; font-weight:700; text-decoration:none; text-transform:uppercase; letter-spacing:0.03em;}
 .btn-primary{background:var(--rust); color:var(--sand);}
 .btn-primary:hover{background:var(--umber);}
@@ -102,19 +104,12 @@ section:last-of-type{border-bottom:none;}
 .section-head h2{font-size:clamp(1.5rem,2.8vw,2.1rem); font-weight:700; margin-top:6px;}
 .section-head p{margin-top:10px; color:var(--olive-soft); font-size:1.04rem; max-width:60ch; margin-left:auto; margin-right:auto;}
 .reveal{opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease;}
+.tw-cursor{display:inline-block; width:2px; margin-left:2px; background:currentColor; animation:twBlink 0.8s steps(1) infinite;}
+@keyframes twBlink{50%{opacity:0;}}
 .reveal.is-visible{opacity:1; transform:none;}
 .band{background:var(--sand-deep);}
 /* ===== Working frameworks table ===== */
-.flow-table-wrap{overflow-x:auto;}
-.flow-table{width:100%; max-width:1100px; margin:0 auto; border-collapse:separate; border-spacing:4px 0; table-layout:fixed;}
-.flow-cell{padding:26px 18px; text-align:center; vertical-align:middle; font-family:'Fraunces',serif; font-weight:600; font-size:1.02rem; line-height:1.35; color:var(--dark-card-text); background:#000; border-top:3px solid var(--ochre); box-shadow:0 3px 10px rgba(11,27,38,0.06);}
 .flow-num{display:block; font-family:'Inter',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.1em; color:var(--ochre); margin-bottom:8px;}
-.flow-arrow-cell{width:46px; text-align:center; vertical-align:middle; color:var(--ochre); font-size:1.35rem; background:transparent; border:none;}
-@media (max-width:760px){
-  .flow-table, .flow-table tbody, .flow-table tr{display:block; width:100%;}
-  .flow-cell{display:block; width:100%; border-top:none; border-left:3px solid var(--ochre); margin-bottom:0;}
-  .flow-arrow-cell{display:block; width:100%; transform:rotate(90deg); padding:2px 0;}
-}
 .sectors-bg{background:#EEF1F4;}
 html[data-theme="dark"] .sectors-bg{background:#0D1820;}
 
@@ -125,6 +120,28 @@ html[data-theme="dark"] .sectors-bg{background:#0D1820;}
 .pillar-item p{font-size:0.96rem; color:var(--olive-soft); margin:0;}
 .tools-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; justify-content:center;}
 .tools-row span{font-size:0.8rem; font-weight:700; border:1px solid var(--olive-soft); padding:6px 12px; border-radius:20px; color:var(--olive);}
+
+/* ===== Working frameworks: horizontal line timeline (icons removed) ===== */
+.htl-track{position:relative; display:flex; justify-content:space-between; gap:0; margin-top:16px; padding-top:28px;}
+.htl-track::before{content:''; position:absolute; top:9px; left:0; right:0; height:2px; background:var(--line);}
+.htl-item{position:relative; flex:1 1 0; padding:0 16px; text-align:left;}
+.htl-item:first-child{padding-left:0;}
+.htl-item:last-child{padding-right:0;}
+.htl-dot{position:absolute; top:-28px; left:16px; width:18px; height:18px; border-radius:50%; background:var(--ochre); border:3px solid var(--sand);}
+.htl-item:first-child .htl-dot{left:0;}
+.htl-item:last-child .htl-dot{background:var(--umber); left:auto; right:16px;}
+.htl-label{display:block; font-size:0.86rem; font-weight:700; letter-spacing:0.05em; color:var(--ochre); margin-bottom:8px;}
+.htl-title{font-family:'Fraunces',serif; font-size:1.2rem; font-weight:700; margin:0 0 8px; color:var(--umber); line-height:1.3;}
+.htl-desc{font-size:0.9rem; color:var(--olive-soft); line-height:1.5; margin:0;}
+@media (max-width:900px){
+  .htl-track{flex-direction:column; gap:26px; padding-top:0;}
+  .htl-track::before{top:0; bottom:0; left:8px; right:auto; width:2px; height:auto;}
+  .htl-item{padding:0 0 0 32px;}
+  .htl-item:first-child, .htl-item:last-child{padding-left:32px;}
+  .htl-dot{top:2px; left:0 !important; right:auto !important;}
+}
+
+/* ===== Why-me cards ===== */
 
 .map-section-grid{display:grid; grid-template-columns:1fr 540px; gap:26px; align-items:center;}
 
@@ -137,23 +154,27 @@ html[data-theme="dark"] .sectors-bg{background:#0D1820;}
 .edu-phd-row span{font-size:0.9rem; color:#AAB8C2;}
 .edu-phd-row .edu-row-bar{width:180px; max-width:55%; height:2px; background:linear-gradient(90deg, rgba(255,255,255,0.1), var(--ochre), rgba(255,255,255,0.1)); margin-top:10px;}
 .edu-mini-grid{display:grid; grid-template-columns:1fr 1fr;}
-.edu-mini-cell{padding:14px 18px;}
-.edu-mini-cell:nth-child(1),.edu-mini-cell:nth-child(2){border-bottom:1px solid rgba(255,255,255,0.12); padding-top:14px;}
-.edu-mini-cell:nth-child(3),.edu-mini-cell:nth-child(4){padding-bottom:2px;}
-.edu-mini-cell:nth-child(odd){border-right:1px solid rgba(255,255,255,0.12); padding-left:2px;}
+.edu-mini-cell{padding:14px 18px 14px 2px; border-bottom:1px solid rgba(255,255,255,0.12);}
+.edu-mini-cell:nth-last-child(-n+2){border-bottom:none; padding-bottom:2px;}
+.edu-mini-cell:nth-child(odd){border-right:1px solid rgba(255,255,255,0.12);}
 .edu-mini-cell:nth-child(even){padding-left:18px;}
 .edu-mini-cell .edu-row-num{font-size:0.76rem; color:var(--ochre); font-weight:700; display:block; margin-bottom:4px;}
 .edu-mini-cell h4{font-family:'Fraunces',serif; font-size:1.08rem; font-weight:600; color:var(--dark-card-text); margin:0 0 3px; line-height:1.22;}
 .edu-mini-cell span{font-size:0.82rem; color:#AAB8C2; line-height:1.32; display:block;}
+.edu-desc{font-size:0.86rem; color:#C9D3DA; line-height:1.5; margin:8px 0 0;}
+.edu-phd-row .edu-desc{max-width:600px;}
+.edu-phd-row.edu-sub-row{padding-top:14px; border-bottom:none; margin-bottom:0;}
+.edu-phd-row.edu-sub-row h3{font-size:1.25rem;}
+.edu-eyebrow-gap{margin-top:18px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.14);}
 @media (max-width:760px){
   .edu-card{padding:18px 16px;}
   .edu-phd-row h3{font-size:1.25rem;}
 }
 @media (max-width:520px){
   .edu-mini-grid{grid-template-columns:1fr;}
-  .edu-mini-cell:nth-child(odd){border-right:none;}
-  .edu-mini-cell:nth-child(1),.edu-mini-cell:nth-child(2),.edu-mini-cell:nth-child(3){border-bottom:1px solid rgba(255,255,255,0.12);}
-  .edu-mini-cell{padding:12px 2px !important;}
+  .edu-mini-cell{border-right:none !important; border-bottom:1px solid rgba(255,255,255,0.12); padding:12px 2px !important;}
+  .edu-mini-cell:last-child{border-bottom:none;}
+  .edu-mini-cell:nth-last-child(2){border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:12px !important;}
 }
 .map-section-grid-stretch{align-items:stretch;}
 .reach-panel{display:flex; flex-direction:column; justify-content:space-between; height:100%; border-left:3px solid var(--rust); padding-left:20px;}
@@ -210,7 +231,12 @@ html[data-theme="dark"] .sectors-bg{background:#0D1820;}
 
 .dk-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
 .dk-grid.dk-grid-5{grid-template-columns:repeat(5,1fr);}
-.dk-card{background:var(--dark-card-bg); color:var(--dark-card-text); border-radius:12px; padding:22px; position:relative; border-top:3px solid var(--dark-card-accent);}
+.dk-grid.dk-grid-4{grid-template-columns:repeat(2,1fr); gap:10px; align-items:start;}
+.dk-grid-4 .dk-card{padding:18px 22px;}
+.dk-grid-4 .dk-icon{margin-bottom:4px;}
+.dk-grid-4 .dk-tag{margin-bottom:6px;}
+.dk-grid-4 .dk-card h4{margin-top:0;}
+.dk-card{background:var(--dark-card-bg); color:var(--dark-card-text); border-radius:12px; padding:22px; position:relative; border-top:3px solid var(--dark-card-accent); display:flex; flex-direction:column;}
 .svc-dark{--dark-card-bg:#0B1B26; --dark-card-accent:#D9B84A;}
 html[data-theme="dark"] .svc-dark{--dark-card-bg:#050D13; --dark-card-accent:#D9B84A;}
 .dk-icon{color:var(--dark-card-accent); margin-bottom:10px;}
@@ -310,7 +336,7 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
   .wrap{padding:0 20px;}
   .nav-links{gap:10px;}
   .nav-links a{display:none;}
-  .dk-grid, .dk-grid.dk-grid-5{grid-template-columns:1fr;}
+  .dk-grid, .dk-grid.dk-grid-5, .dk-grid.dk-grid-4{grid-template-columns:1fr;}
 }
 
 </style>
@@ -402,12 +428,12 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
       <div class="photo-name reveal">Aniefiok Dominic Effiong</div>
     </div>
     <div>
-      <h2 class="headline reveal">14+ years turning field evidence into institutional practice.</h2>
-      <p class="dropcap reveal">I design and institutionalize knowledge management systems, M&amp;E frameworks, research and evaluation studies, and adaptive learning practice for governments, donors, and international NGOs across West and Sub-Saharan Africa. Every engagement is built to outlive the contract that funded it.</p>
-      <p class="pullquote reveal">"A USAID Global CLA Case Study Competition Award Winner, Project Management Professional (PMP&reg;) and PMI Project Management Office (PMO) certified professional whose work is trusted by clients to bridge the gap between evidence and action, strengthening MEAL systems, enabling adaptive learning, and building organizations that learn, improve, and deliver impact."</p>
+      <h2 class="headline typewriter">14+ years turning field evidence into institutional practice.</h2>
+      <p class="dropcap typewriter">I design and institutionalize knowledge management systems, M&amp;E frameworks, research and evaluation studies, and adaptive learning practice for governments, donors, and international NGOs across West and Sub-Saharan Africa. Every engagement is built to outlive the contract that funded it.</p>
+      <p class="pullquote typewriter">"A USAID Global CLA Case Study Competition Award Winner, Project Management Professional (PMP&reg;) and PMI Project Management Office (PMO) certified professional whose work is trusted by clients to bridge the gap between evidence and action, strengthening MEAL systems, enabling adaptive learning, and building organizations that learn, improve, and deliver impact."</p>
       <div class="cta-row reveal">
-        <a class="btn btn-primary" href="#contact">Start a conversation</a>
-        <a class="btn btn-ghost" href="https://drive.google.com/uc?export=download&amp;id=1poGyIyipEIlepbDBj9dfNILiSWJfoEOQ" download="Aniefiok_Dominic_Effiong_CV.pdf">Curriculum Vitae</a>
+        <a class="btn btn-primary" href="https://wa.me/2348030947254?text=Hello%20Aniefiok%2C%20I%20found%20your%20website%20and%20would%20like%20to%20discuss%20a%20possible%20engagement." target="_blank" rel="noopener">Start a WhatsApp Conversation</a>
+        <a class="btn btn-ghost" href="https://drive.google.com/uc?export=download&amp;id=1He_8K7Bv_R0eTxEsju-Tb2lvIT2HqaVd" download="Aniefiok_Dominic_Effiong_Consultancy_Profile.pdf">Download Consultancy Profile</a>
       </div>
     </div>
   </div>
@@ -547,22 +573,43 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
 <section id="how" class="band">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow reveal">My Working Frameworks</span><h2>The Systems Behind the Practice</h2><p class="p-oneline">Exploring the systems, tools, and thinking approaches behind effective solutions.</p></div>
-    <div class="flow-table-wrap reveal">
-      <table class="flow-table">
-        <tbody>
-          <tr>
-            <td class="flow-cell"><span class="flow-num">STEP 01</span>Listen &amp; diagnose the problem</td>
-            <td class="flow-arrow-cell">&#10132;</td>
-            <td class="flow-cell"><span class="flow-num">STEP 02</span>Design the framework</td>
-            <td class="flow-arrow-cell">&#10132;</td>
-            <td class="flow-cell"><span class="flow-num">STEP 03</span>Build with the Team for Sustainability</td>
-            <td class="flow-arrow-cell">&#10132;</td>
-            <td class="flow-cell"><span class="flow-num">STEP 04</span>Institutionalize &amp; handover the product</td>
-            <td class="flow-arrow-cell">&#10132;</td>
-            <td class="flow-cell"><span class="flow-num">STEP 05</span>Track what&rsquo;s working and adapt</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="htl-track reveal">
+
+      <div class="htl-item">
+        <span class="htl-dot"></span>
+        <span class="htl-label">Step 01</span>
+        <h3 class="htl-title">Listen &amp; diagnose the problem</h3>
+        <p class="htl-desc">Starting with stakeholder conversations and data review to understand the real gap before designing a solution.</p>
+      </div>
+
+      <div class="htl-item">
+        <span class="htl-dot"></span>
+        <span class="htl-label">Step 02</span>
+        <h3 class="htl-title">Design the framework</h3>
+        <p class="htl-desc">Translating that diagnosis into a practical system, tool, or process built for the context it will operate in.</p>
+      </div>
+
+      <div class="htl-item">
+        <span class="htl-dot"></span>
+        <span class="htl-label">Step 03</span>
+        <h3 class="htl-title">Build with the Team for Sustainability</h3>
+        <p class="htl-desc">Co-creating with the people who will own it, so the system outlives the consultancy.</p>
+      </div>
+
+      <div class="htl-item">
+        <span class="htl-dot"></span>
+        <span class="htl-label">Step 04</span>
+        <h3 class="htl-title">Institutionalize &amp; handover the product</h3>
+        <p class="htl-desc">Embedding the tool into existing workflows and policy so it becomes standard practice, not a one-off deliverable.</p>
+      </div>
+
+      <div class="htl-item">
+        <span class="htl-dot"></span>
+        <span class="htl-label">Step 05</span>
+        <h3 class="htl-title">Track what&rsquo;s working and adapt</h3>
+        <p class="htl-desc">Monitoring uptake and outcomes, then refining the system as evidence comes in.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -574,91 +621,118 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     <div class="carousel-track" id="consultTrack">
       <article class="grafx-card reveal" style="--accent:var(--rust);">
         <span class="grafx-num">01</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-users"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-scale"/></svg></div>
         <span class="kicker">Dispatch 01</span>
-        <h3>Senior Knowledge Management & Learning Consultant &mdash; AWLI Impact Assessment</h3>
-        <div class="byline">Akina Mama wa Afrika (AMwA) &middot; July 2026 · Kenya, Uganda, Zambia, Senegal</div>
-        <p>Leading knowledge management and learning for AWLI&rsquo;s impact assessment across 17 African countries, applying Outcome Harvesting and feminist narrative approaches to capture evidence-based stories of change and strengthen strategic use of impact evidence for learning, advocacy, and programming.</p>
+        <h3>Evaluation Consultant &mdash; Pilot Assessment and Learning Case Study of the Tax Grievance Redress Mechanism (GRM) Project</h3>
+        <div class="byline">International Budget Partnership (IBP) &middot; 2026 &middot; Abuja, Nigeria</div>
+        <p>Led an evaluative learning case study of a three-state Tax Grievance Redress Mechanism pilot, assessing accessibility, revenue authority capacity, responsiveness, taxpayer trust, gender inclusion, and coordination. Translated triangulated evidence into practical policy and scale-up recommendations for wider replication.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--olive);">
         <span class="grafx-num">02</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-heart"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-book"/></svg></div>
         <span class="kicker">Dispatch 02</span>
-        <h3>Senior Evaluation & Adaptive Learning Consultant &mdash; Endline Evaluation</h3>
-        <div class="byline">CBM Global & Comic Relief &middot; 2026 · Nigeria</div>
-        <p>Supported the evaluation of a national mental health programme, generating triangulated evidence across four result areas and contributing to an endline report. Authored a case study and policy brief that informed Comic Relief&rsquo;s future investment decisions.</p>
+        <h3>Consultant &mdash; Health Sector Reports Development (JAR &amp; SOHNR)</h3>
+        <div class="byline">Oxford Policy Management &middot; 2026 &middot; Abuja, Nigeria</div>
+        <p>Provided technical assistance to the FMoHSW by strengthening data quality, analysis, and reporting systems. Supported the development and validation of key health sector reports, including SOHNR and JAR publications, through stakeholder engagement, data reconciliation, and evidence-based documentation aligned with national frameworks for high-level decision-making.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--ochre);">
         <span class="grafx-num">03</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-compass"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-bars"/></svg></div>
         <span class="kicker">Dispatch 03</span>
-        <h3>Lead Research Consultant &mdash; Health System Vulnerability Assessment</h3>
-        <div class="byline">Federal Ministry of Health &middot; 2026 · Nigeria</div>
-        <p>Analyzed 2,121 data points across 60 institutions and seven health system domains, informing NHSRII reprioritization. Key results were presented by the Honourable Minister of Health and Social Welfare at the Geneva Conference to inform global health resilience discussions.</p>
+        <h3>Evaluation Consultant &mdash; Maternal, Newborn &amp; Child Health Data Ecosystem Assessment</h3>
+        <div class="byline">Federal Ministry of Health and Social Welfare &middot; 2026 &middot; Abuja, Nigeria</div>
+        <p>Led the technical design and implementation of a mixed-methods evaluation of Nigeria&rsquo;s MCH data ecosystem, mapping federal platforms and information flows to surface fragmentation and interoperability gaps. Translated findings into prioritized recommendations linked to institutional responsibilities and timelines.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--rust);">
         <span class="grafx-num">04</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-book"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-users"/></svg></div>
         <span class="kicker">Dispatch 04</span>
-        <h3>Knowledge Management Consultant &mdash; Strategy Adoption & Institutionalization</h3>
-        <div class="byline">LAFIYA / Palladium &middot; 2025–2026 · Nigeria</div>
-        <p>Developed a national health-sector knowledge management framework for the Federal Ministry of Health and Social Welfare, including KM toolkits, a federated operating model, and a structured capacity-building curriculum.</p>
+        <h3>Senior Knowledge Management & Learning Consultant &mdash; AWLI Impact Assessment</h3>
+        <div class="byline">Akina Mama wa Afrika (AMwA) &middot; 2026 &middot; Kenya, Uganda, Zambia, Senegal</div>
+        <p>Leading knowledge management and learning for AWLI&rsquo;s impact assessment across 17 African countries, applying Outcome Harvesting and feminist narrative approaches to capture evidence-based stories of change and strengthen strategic use of impact evidence for learning, advocacy, and programming.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--olive);">
         <span class="grafx-num">05</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-shield"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-heart"/></svg></div>
         <span class="kicker">Dispatch 05</span>
-        <h3>Lead Investigator &mdash; Baseline Evaluation</h3>
-        <div class="byline">CBM & SFHF &middot; Mar–Apr 2026 · Kogi State, Nigeria</div>
-        <p>Established a performance baseline for a disability inclusion and disaster risk reduction programme in Kogi State using a stratified, multi-instrument design to capture disability and geographic differences.</p>
+        <h3>Senior Evaluation & Adaptive Learning Consultant &mdash; Endline Evaluation</h3>
+        <div class="byline">CBM Global & Comic Relief &middot; 2026 &middot; Nigeria</div>
+        <p>Supported the evaluation of a national mental health programme, generating triangulated evidence across four result areas and contributing to an endline report. Authored a case study and policy brief that informed Comic Relief&rsquo;s future investment decisions.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--ochre);">
         <span class="grafx-num">06</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-scale"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-compass"/></svg></div>
         <span class="kicker">Dispatch 06</span>
-        <h3>Principal Investigator &mdash; Baseline Assessment</h3>
-        <div class="byline">IBP & PACE–DAI &middot; Mar 2026 · Nigeria, 10 states</div>
-        <p>Established an evidence base on tax grievance redress mechanisms across 10 Nigerian states and developed a standardized performance scorecard to inform programme design, tax reform alignment, and future revenue governance assessments.</p>
+        <h3>Lead Research Consultant &mdash; Health System Vulnerability Assessment</h3>
+        <div class="byline">Federal Ministry of Health &middot; 2026 &middot; Nigeria</div>
+        <p>Analyzed 2,121 data points across 60 institutions and seven health system domains, informing NHSRII reprioritization. Key results were presented by the Honourable Minister of Health and Social Welfare at the Geneva Conference to inform global health resilience discussions.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--rust);">
         <span class="grafx-num">07</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-lock"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-book"/></svg></div>
         <span class="kicker">Dispatch 07</span>
-        <h3>Learning Evaluator &mdash; Endline Evaluation, Multi-Country Portfolio</h3>
-        <div class="byline">Digital Defenders Partnership / Hivos &middot; Sep–Dec 2025 · Nigeria, Benin, Uganda</div>
-        <p>Generated evidence on digital security capacity strengthening across three Sub-Saharan African countries, contributing to an OECD-DAC-aligned endline evaluation and case studies that informed the Netherlands Ministry of Foreign Affairs&rsquo; programme continuation decisions.</p>
+        <h3>Knowledge Management Consultant &mdash; Strategy Adoption & Institutionalization</h3>
+        <div class="byline">LAFIYA / Palladium &middot; 2025&ndash;2026 &middot; Nigeria</div>
+        <p>Developed a national health-sector knowledge management framework for the Federal Ministry of Health and Social Welfare, including KM toolkits, a federated operating model, and a structured capacity-building curriculum.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--olive);">
         <span class="grafx-num">08</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-bars"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-shield"/></svg></div>
         <span class="kicker">Dispatch 08</span>
-        <h3>MEL Lead Consultant &mdash; MEAL Systems Strengthening</h3>
-        <div class="byline">HumAngle Foundation &middot; Sep–Oct 2025 · Nigeria</div>
-        <p>Established a unified MEAL framework across HumAngle Foundation&rsquo;s programme portfolio, enabling consistent performance measurement and achieving an 87.5% improvement in staff monitoring, evaluation, and learning competencies.</p>
+        <h3>Lead Investigator &mdash; Baseline Evaluation</h3>
+        <div class="byline">CBM & SFHF &middot; 2026 &middot; Kogi State, Nigeria</div>
+        <p>Established a performance baseline for a disability inclusion and disaster risk reduction programme in Kogi State using a stratified, multi-instrument design to capture disability and geographic differences.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--ochre);">
         <span class="grafx-num">09</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-users"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-scale"/></svg></div>
         <span class="kicker">Dispatch 09</span>
-        <h3>Investigative Evaluator &mdash; National Baseline Assessment</h3>
-        <div class="byline">Centre LSD / Ford Foundation &middot; Jul–Aug 2025 · Nigeria, 6 zones</div>
-        <p>Supported the development of a national GBV-prevention and male feminist network-building baseline across Nigeria&rsquo;s six geopolitical zones, delivering validated KPIs through an efficient multi-method virtual data collection approach.</p>
+        <h3>Principal Investigator &mdash; Baseline Assessment</h3>
+        <div class="byline">IBP & PACE–DAI &middot; 2026 &middot; Nigeria, 10 states</div>
+        <p>Established an evidence base on tax grievance redress mechanisms across 10 Nigerian states and developed a standardized performance scorecard to inform programme design, tax reform alignment, and future revenue governance assessments.</p>
       </article>
 
       <article class="grafx-card reveal" style="--accent:var(--rust);">
         <span class="grafx-num">10</span>
-        <div class="grafx-icon"><svg class="icon"><use href="#i-droplet"/></svg></div>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-lock"/></svg></div>
         <span class="kicker">Dispatch 10</span>
+        <h3>Learning Evaluator &mdash; Endline Evaluation, Multi-Country Portfolio</h3>
+        <div class="byline">Digital Defenders Partnership / Hivos &middot; 2025 &middot; Nigeria, Benin, Uganda</div>
+        <p>Generated evidence on digital security capacity strengthening across three Sub-Saharan African countries, contributing to an OECD-DAC-aligned endline evaluation and case studies that informed the Netherlands Ministry of Foreign Affairs&rsquo; programme continuation decisions.</p>
+      </article>
+
+      <article class="grafx-card reveal" style="--accent:var(--olive);">
+        <span class="grafx-num">11</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-bars"/></svg></div>
+        <span class="kicker">Dispatch 11</span>
+        <h3>MEL Lead Consultant &mdash; MEAL Systems Strengthening</h3>
+        <div class="byline">HumAngle Foundation &middot; 2025 &middot; Nigeria</div>
+        <p>Established a unified MEAL framework across HumAngle Foundation&rsquo;s programme portfolio, enabling consistent performance measurement and achieving an 87.5% improvement in staff monitoring, evaluation, and learning competencies.</p>
+      </article>
+
+      <article class="grafx-card reveal" style="--accent:var(--ochre);">
+        <span class="grafx-num">12</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-users"/></svg></div>
+        <span class="kicker">Dispatch 12</span>
+        <h3>Investigative Evaluator &mdash; National Baseline Assessment</h3>
+        <div class="byline">Centre LSD / Ford Foundation &middot; 2025 &middot; Nigeria, 6 zones</div>
+        <p>Supported the development of a national GBV-prevention and male feminist network-building baseline across Nigeria&rsquo;s six geopolitical zones, delivering validated KPIs through an efficient multi-method virtual data collection approach.</p>
+      </article>
+
+      <article class="grafx-card reveal" style="--accent:var(--rust);">
+        <span class="grafx-num">13</span>
+        <div class="grafx-icon"><svg class="icon"><use href="#i-droplet"/></svg></div>
+        <span class="kicker">Dispatch 13</span>
         <h3>Associate Evaluator &mdash; Endline Evaluation</h3>
-        <div class="byline">WaterAid &middot; May–Jul 2025 · Nigeria</div>
+        <div class="byline">WaterAid &middot; 2025 &middot; Nigeria</div>
         <p>Led an OECD-DAC-aligned endline evaluation of a multi-year WASH and maternal and child health programme, producing decision-ready evidence on sustainability and scale-up while ensuring rigorous data quality.</p>
       </article>
     </div>
@@ -714,27 +788,34 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
 <section id="why-me" class="band">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow reveal">Why Work With Me</span><h2>What Sets Me Apart From Others</h2><p class="p-oneline">I help organizations transform evidence into action by strengthening learning systems, improving decision-making, and creating practical solutions that deliver measurable impact.</p></div>
-    <div class="dk-grid">
+    <div class="dk-grid dk-grid-4">
 
       <div class="dk-card svc-dark reveal">
-        <svg class="icon dk-icon"><use href="#i-scale"/></svg>
+        <svg class="icon dk-icon"><use href="#i-compass"/></svg>
         <span class="dk-tag">01</span>
-        <h4>Strategic Evidence Into Action</h4>
-        <p>I go beyond collecting and analyzing data, helping organizations interpret evidence, generate insight, and apply learning to strengthen programmes, policies, and strategic decisions.</p>
-      </div>
-
-      <div class="dk-card svc-dark reveal">
-        <svg class="icon dk-icon"><use href="#i-users"/></svg>
-        <span class="dk-tag">02</span>
-        <h4>Deep Technical Expertise and Field Experience</h4>
-        <p>Extensive experience across Knowledge Management, Monitoring, Evaluation, Research, and Adaptive Learning gives me a practical understanding of complex development and humanitarian environments, connecting technical approaches to real implementation realities.</p>
+        <h4>Evidence That Drives Decisions</h4>
+        <p>Turn complex research, evaluation, and programme data into credible, decision-ready insights that help clients strengthen policies, improve programme performance, allocate resources better, and make evidence-informed decisions with greater confidence and accountability.</p>
       </div>
 
       <div class="dk-card svc-dark reveal">
         <svg class="icon dk-icon"><use href="#i-refresh"/></svg>
+        <span class="dk-tag">02</span>
+        <h4>Learning That Improves Performance</h4>
+        <p>Design practical learning and knowledge-management systems that help teams capture lessons, reflect, adapt, and collaborate more effectively, enabling organizations to improve implementation, strengthen institutional memory, support adaptive management, and sustain better programme results over time.</p>
+      </div>
+
+      <div class="dk-card svc-dark reveal">
+        <svg class="icon dk-icon"><use href="#i-bars"/></svg>
         <span class="dk-tag">03</span>
-        <h4>Building Learning Systems That Create Lasting Impact</h4>
-        <p>I help organizations establish sustainable systems that capture knowledge, strengthen accountability, promote collaboration, and ensure lessons from implementation continuously improve future outcomes.</p>
+        <h4>Systems for Sustainable Impact</h4>
+        <p>Strengthen MEAL, knowledge and reporting systems, build staff capacity, and translate complex programme challenges into practical solutions that improve data quality, accountability, and organizational learning.</p>
+      </div>
+
+      <div class="dk-card svc-dark reveal">
+        <svg class="icon dk-icon"><use href="#i-scale"/></svg>
+        <span class="dk-tag">04</span>
+        <h4>Better Value for Investment</h4>
+        <p>Gain senior-level expertise without the overhead costs of a large consulting firm. Resources focus on the technical work, delivering stronger value, faster turnaround, and greater attention to your assignment.</p>
       </div>
 
     </div>
@@ -747,13 +828,14 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     <div class="sector-cloud"><span class="sector-tag reveal">Health Systems & Public Health <em>FMoH, LAFIYA/Palladium</em></span>
 <span class="sector-tag reveal">Governance & Public Finance <em>IBP, PACE–DAI</em></span>
 <span class="sector-tag reveal">Gender, GBV & Women's Leadership <em>Centre LSD/Ford, AMwA</em></span>
-<span class="sector-tag reveal">WASH & Maternal-Child Health <em>WaterAid</em></span>
+<span class="sector-tag reveal">WASH & Maternal-Child Health <em>WaterAid, FMoHSW</em></span>
 <span class="sector-tag reveal">Disability Inclusion & DRR <em>CBM, SFHF</em></span>
 <span class="sector-tag reveal">Digital Rights & Security <em>Digital Defenders Partnership, Hivos</em></span>
 <span class="sector-tag reveal">Peacebuilding & Governance <em>Dexis/USAID West Africa</em></span>
 <span class="sector-tag reveal">Livelihoods & Economic Resilience <em>Mercy Corps</em></span>
 <span class="sector-tag reveal">Media, Info Integrity & Conflict <em>HumAngle, USAID/West Africa</em></span>
 <span class="sector-tag reveal">Humanitarian Multi-Sector Response <em>IRC, Save the Children</em></span>
+<span class="sector-tag reveal">Health Sector Data & Reporting Systems <em>Oxford Policy Management</em></span>
     </div>
   </div>
 </section>
@@ -809,38 +891,46 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     <div class="section-head">
       <span class="eyebrow reveal">Academic Foundation</span>
       <h2>Education &amp; Doctoral Research</h2>
-      <p class="p-oneline">An academic record spanning project management, public health, and agribusiness, culminating in ongoing doctoral study.</p>
+      <p class="p-oneline">An academic record spanning project management, public health, agribusiness, and economic policy, anchored by ongoing doctoral research.</p>
     </div>
     <div class="edu-card reveal">
-      <span class="edu-card-eyebrow">Degrees &amp; Institutions</span>
-
-      <div class="edu-phd-row">
-        <span class="edu-row-num">01</span>
-        <h3>PhD in Project Management</h3>
-        <span>Nasarawa State University, Keffi, Nigeria &middot; 2026 &ndash; Present</span>
-        <div class="edu-row-bar"></div>
-      </div>
-
       <div class="edu-mini-grid">
         <div class="edu-mini-cell">
-          <span class="edu-row-num">02</span>
-          <h4>Master's in Agribusiness Management</h4>
-          <span>Rome Business School, Lagos, Nigeria &middot; 2022 &ndash; 2023</span>
+          <span class="edu-row-num">01</span>
+          <h4>PhD in Project Management</h4>
+          <span>Nasarawa State University, Keffi, Nigeria &middot; 2026 &ndash; Present</span>
+          <p class="edu-desc">Doctoral research examining project governance and health project management systems in Nigeria, including multi-level governance of health financing programmes.</p>
         </div>
         <div class="edu-mini-cell">
+          <span class="edu-row-num">02</span>
+          <h4>Master of Economic Policy Management</h4>
+          <span>Miva Open University, Abuja, Nigeria &middot; 2026 &ndash; Present</span>
+          <p class="edu-desc">Graduate study in economic policy analysis, public finance, and development policy, adding an economic policy lens to evaluation, revenue governance, and health sector reform work.</p>
+        </div>
+
+        <div class="edu-mini-cell">
           <span class="edu-row-num">03</span>
-          <h4>Master of Public Health (MPH)</h4>
-          <span>University of Central Nicaragua &middot; 2020 &ndash; 2022</span>
+          <h4>Master's in Agribusiness Management</h4>
+          <span>Rome Business School, Lagos, Nigeria &middot; 2022 &ndash; 2023</span>
+          <p class="edu-desc">Graduate study in agribusiness strategy and management, extending a systems-thinking lens to agricultural value chains and rural development programming.</p>
         </div>
         <div class="edu-mini-cell">
           <span class="edu-row-num">04</span>
-          <h4>MBA, Project Management &amp; Operations</h4>
-          <span>Assam Don Bosco University, Guwahati, India &middot; 2017 &ndash; 2019</span>
+          <h4>Master of Public Health (MPH)</h4>
+          <span>University of Central Nicaragua, Nicaragua &middot; 2020 &ndash; 2022</span>
+          <p class="edu-desc">Graduate study in public health systems, population health, and health programme design, the foundation for the health-sector evaluation and KM work that followed.</p>
         </div>
         <div class="edu-mini-cell">
           <span class="edu-row-num">05</span>
+          <h4>MBA, Project Management &amp; Operations</h4>
+          <span>Assam Don Bosco University, India &middot; 2017 &ndash; 2019</span>
+          <p class="edu-desc">Graduate coursework in project management methodology and operations strategy, underpinning the PMP&reg; and PMO credentials that followed.</p>
+        </div>
+        <div class="edu-mini-cell">
+          <span class="edu-row-num">06</span>
           <h4>Bachelor of Technology in Project Management</h4>
           <span>Federal University of Technology, Owerri, Nigeria &middot; 2004 &ndash; 2009</span>
+          <p class="edu-desc">Foundational undergraduate training in project management principles and practice, the starting point of a 14+ year career in the field.</p>
         </div>
       </div>
     </div>
@@ -921,6 +1011,42 @@ footer h2{color:var(--footer-text); font-size:clamp(1.15rem,2vw,1.4rem); font-we
     }, { threshold: 0.12 });
     revealEls.forEach(function(el,i){ el.style.transitionDelay = (Math.min(i%6,5)*0.05)+'s'; robs.observe(el); });
   } else { revealEls.forEach(function(el){ el.classList.add('is-visible'); }); }
+
+  // ===== Fast typewriter effect on load (hero headline, intro, pullquote) =====
+  (function(){
+    var targets = document.querySelectorAll('.typewriter');
+    if(!targets.length) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = Array.prototype.map.call(targets, function(el){
+      return { el: el, full: el.textContent };
+    });
+    if(reduced){ return; }
+    items.forEach(function(it){ it.el.textContent = ''; });
+
+    function typeNext(idx){
+      if(idx >= items.length) return;
+      var it = items[idx];
+      var full = it.full;
+      var i = 0;
+      var chunk = Math.max(1, Math.round(full.length / 70));
+      var cursor = document.createElement('span');
+      cursor.className = 'tw-cursor';
+      function tick(){
+        i += chunk;
+        if(i > full.length) i = full.length;
+        it.el.textContent = full.slice(0, i);
+        it.el.appendChild(cursor);
+        if(i < full.length){
+          setTimeout(tick, 22);
+        } else {
+          cursor.remove();
+          setTimeout(function(){ typeNext(idx + 1); }, 200);
+        }
+      }
+      tick();
+    }
+    typeNext(0);
+  })();
 
   var htmlEl = document.documentElement;
   var themeBtn = document.getElementById('themeToggle');
