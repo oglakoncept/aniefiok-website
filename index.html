@@ -804,7 +804,6 @@ html[data-theme="dark"] .cert-status{color:#7FE0A3;}
 <body>
 
 
-<div class="award-banner"><span class="ab-long">&#127942; 2022 USAID Global CLA Case Study Competition Award Winner: Highest global recognition for Collaborating, Learning &amp; Adapting practice</span><span class="ab-short">&#127942; 2022 USAID Global CLA Case Study Award Winner</span></div>
 
 <header class="masthead-bar">
   <div class="nav-inner">
@@ -1302,7 +1301,7 @@ html[data-theme="dark"] .cert-status{color:#7FE0A3;}
         <span class="hr-award-kicker">Award-Winning Case Study &middot; 2022</span>
         <h3>How Restructuring and Culture Change Impacted Our Performance</h3>
         <p>Winner of the 2022 USAID Global Collaborating, Learning and Adapting (CLA) Case Study Competition, the highest global recognition for CLA practice.</p>
-        <a class="hr-award-btn" href="https://drive.google.com/uc?export=download&amp;id=1Nm92BAR8eXmiVbd6HyY1i4yTpxei0rxH" download="CLA_Case_Study.pdf">&#8595; Download the Case Study</a>
+        <a class="hr-award-btn" href="#publications" id="hrAwardLink">Download it in Publications &rarr;</a>
       </div>
     </div>
     <div class="hr-cta reveal">
@@ -1312,6 +1311,8 @@ html[data-theme="dark"] .cert-status{color:#7FE0A3;}
   </div>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
+  var aw=document.getElementById('hrAwardLink');
+  if(aw)aw.addEventListener('click',function(){setTimeout(function(){var c=document.querySelector('#publications .lib-badge');c=c&&c.closest('.lib-card');if(c){window.scrollTo({top:c.getBoundingClientRect().top+window.pageYOffset-110,behavior:'smooth'});}},140);});
   var books=document.querySelectorAll('#selected-reports .hr-book');
   [].forEach.call(books,function(a){
     var key=a.getAttribute('data-target'),img=a.querySelector('img'),src=null,item=null;
